@@ -1,3 +1,35 @@
+# Modules
+
+## Petition Module
+
+- Petition pipes
+- All petitions page
+- Single petition details page
+- Petition services
+Includes: get petitions, get single petition, create petition
+
+## User Module
+
+- MyPage page
+- Login page
+- Register page
+- Auth service
+Includes: registration, login, authentication
+
+## Route Module
+
+Defines app routing
+
+## Home Module
+
+- Featured petition directive
+- Most popular petitions directive
+- Newest petitions directive
+
+## Shared module
+
+Used for all commonly used directives and pipes
+
 # PetitionMe
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
