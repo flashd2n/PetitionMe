@@ -6,6 +6,8 @@ import { PetitionModule } from './petition/petition.module';
 import { UserModule } from './user/user.module';
 import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     PetitionModule,
     UserModule,
     HomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

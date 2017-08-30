@@ -1,0 +1,17 @@
+.footer-bottom {
+    background-color:#e63900;
+    width: 100%;
+}
+
+.copyright {
+    color: #fff;
+    padding: 7px 0;
+}
+
+.design {
+    color: #fff;
+    padding: 7px 0;
+}
+.design a {
+    color: #fff;
+}
