@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PetitionModule } from './petition/petition.module';
+// import { PetitionModule } from './petition/petition.module';
 import { UserModule } from './user/user.module';
 import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -15,7 +15,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
-    PetitionModule,
+    // PetitionModule,
     UserModule,
     HomeModule,
     AppRoutingModule,
