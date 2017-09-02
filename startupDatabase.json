@@ -1,0 +1,40 @@
+{
+  "petitions" : {
+    "-Kdl_wRRkn7nJxgz4B54" : {
+      "name" : "Feed the elephant in the Zoo three times a day everyday.",
+      "type" : "Animal Care",
+      "creator": "Gosho",
+      "deliverTo": "Mayor of Sofia City",
+      "city" : "Sofia",
+      "country" : "Bulgaria",
+      "goal": 1000,
+      "supporters": 0,
+      "signupUsers": [],
+      "editorsChoice": true
+    },
+    "-KdleehAQm0HgVFYdkUo" : {
+      "name" : "Bring some rain over the production",
+      "type" : "Nature",
+      "creator": "Pesho",
+      "deliverTo": "Emo Cholakov",
+      "city" : "Sofia",
+      "country" : "Bulgaria",
+      "goal": 2500,
+      "supporters": 0,
+      "signupUsers": [],
+      "editorsChoice": true
+    },
+    "-Kdlg3AqKNTnbhjAVT8h" : {
+      "name" : "Free Dinner for children in Schools",
+      "type" : "Educational",
+      "creator": "Ivan",
+      "deliverTo": "Ministry of Education and Science",
+      "city" : "Sofia",
+      "country" : "Bulgaria",
+      "goal": 9000,
+      "supporters": 0,
+      "signupUsers": [],
+      "editorsChoice": false
+    }
+  }
+}

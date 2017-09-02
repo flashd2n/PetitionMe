@@ -1,16 +1,18 @@
 .footer-bottom {
+    margin-top: 10px;
     background-color:#e63900;
     width: 100%;
+    min-height: 70px;
 }
 
 .copyright {
     color: #fff;
-    padding: 7px 0;
+    padding: 20px 0;
 }
 
 .design {
     color: #fff;
-    padding: 7px 0;
+    padding: 20px 0;
 }
 .design a {
     color: #fff;

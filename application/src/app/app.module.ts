@@ -8,7 +8,6 @@ import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
-
 @NgModule({
   declarations: [
     AppComponent
