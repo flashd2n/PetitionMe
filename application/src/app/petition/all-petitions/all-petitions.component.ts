@@ -14,6 +14,7 @@ export class AllPetitionsComponent implements OnInit {
   constructor( private firebaseService: FirebasePetitionService ) {
       this.firebaseService.getPetitions().subscribe(petitions => {
       console.log(petitions);
+      console.log(typeof petitions);
       this.petitions = petitions;
     });
   }

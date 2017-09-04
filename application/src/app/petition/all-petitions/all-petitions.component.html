@@ -29,8 +29,7 @@
                     </div>
                     <div class="card-footer">
                         <small>Signed By {{petition.signupUsers.length}} People</small>
-                        <!--<button class="btn btn-secondary float-right btn-sm">Details</button>-->
-                        <a href="#" class="btn btn-secondary float-right btn-sm">Details</a>
+                        <a [routerLink]="['../', petition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
                     </div>
                 </div>
         </div>

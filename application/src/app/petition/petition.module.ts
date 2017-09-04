@@ -5,6 +5,7 @@ import { AllPetitionsComponent } from './all-petitions/all-petitions.component';
 import { PetitonRoutingModule } from './petition-routing.module';
 import { NewPetitionComponent } from './new-petition/new-petition.component';
 import { PetitionDetailsComponent } from './petition-details/petition-details.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -16,6 +17,11 @@ import { PetitionDetailsComponent } from './petition-details/petition-details.co
     AllPetitionsComponent,
     NewPetitionComponent,
     PetitionDetailsComponent
-]
+],
+  exports:  [
+    AllPetitionsComponent,
+    NewPetitionComponent,
+    PetitionDetailsComponent
+  ]
 })
 export class PetitionModule { }
