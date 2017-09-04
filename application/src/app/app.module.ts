@@ -8,6 +8,13 @@ import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FirebasePetitionService } from './petition/firebase-petition.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,9 +25,12 @@ import { SharedModule } from './shared/shared.module';
     UserModule,
     HomeModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule, // imports firebase/database, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
-  providers: [],
+  providers: [ FirebasePetitionService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

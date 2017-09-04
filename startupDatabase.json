@@ -4,12 +4,12 @@
       "name" : "Feed the elephant in the Zoo three times a day everyday.",
       "type" : "Animal Care",
       "creator": "Gosho",
-      "deliverTo": "Mayor of Sofia City",
+      "deliverTo": "Chief of Sofia City Zoo",
       "city" : "Sofia",
       "country" : "Bulgaria",
       "goal": 1000,
       "supporters": 0,
-      "signupUsers": [],
+      "signupUsers": ["user1", "user2"],
       "editorsChoice": true
     },
     "-KdleehAQm0HgVFYdkUo" : {
@@ -21,11 +21,11 @@
       "country" : "Bulgaria",
       "goal": 2500,
       "supporters": 0,
-      "signupUsers": [],
+      "signupUsers": ["user1", "user2"],
       "editorsChoice": true
     },
     "-Kdlg3AqKNTnbhjAVT8h" : {
-      "name" : "Free Dinner for children in Schools",
+      "name" : "Free Lunch for children in Schools",
       "type" : "Educational",
       "creator": "Ivan",
       "deliverTo": "Ministry of Education and Science",
@@ -33,7 +33,7 @@
       "country" : "Bulgaria",
       "goal": 9000,
       "supporters": 0,
-      "signupUsers": [],
+      "signupUsers": ["user1", "user2"],
       "editorsChoice": false
     }
   }
