@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FirebasePetitionService } from './petition/firebase-petition.service';
+import { FirebaseAuthService } from './user/firebase-auth.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { FirebasePetitionService } from './petition/firebase-petition.service';
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
-  providers: [ FirebasePetitionService ],
+  providers: [ FirebasePetitionService, FirebaseAuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

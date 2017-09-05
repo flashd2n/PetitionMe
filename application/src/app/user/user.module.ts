@@ -1,10 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UserComponent } from './user/user.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
-  declarations: []
+  declarations: [
+    UserComponent
+  ],
+  exports:  [
+    UserComponent
+  ]
 })
 export class UserModule { }
