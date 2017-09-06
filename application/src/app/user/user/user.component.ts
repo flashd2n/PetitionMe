@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent  {
-email: string;
+  email: string;
   password: string;
 
   constructor(public authService: FirebaseAuthService) {}
