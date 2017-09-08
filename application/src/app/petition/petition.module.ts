@@ -6,6 +6,7 @@ import { PetitonRoutingModule } from './petition-routing.module';
 import { NewPetitionComponent } from './new-petition/new-petition.component';
 import { PetitionDetailsComponent } from './petition-details/petition-details.component';
 import { RouterModule } from '@angular/router';
+import { OrderByDatePipe } from './all-petitions/orderByDate.pipe';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     AllPetitionsComponent,
     NewPetitionComponent,
-    PetitionDetailsComponent
+    PetitionDetailsComponent,
+    OrderByDatePipe
 ],
   exports:  [
     AllPetitionsComponent,

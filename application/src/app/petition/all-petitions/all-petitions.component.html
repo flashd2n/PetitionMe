@@ -1,37 +1,37 @@
-<p>
-  all-petitions works!
-</p>
-
 <div class="container">
+    <h4>Take a look at all available petitions starting with latest ones</h4>
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let petition of petitions">
-                <div class="card">
-                    <img class="card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
-                    <div class="card-block">
-                        <figure class="editors-choce" *ngIf="petition.editorsChoice">
-                            <img src="http://dermasetreview.com/wp-content/uploads/2017/08/best-editors-choice.png" class="editors-choce-avatar" alt=""> 
-                        </figure>
-                        
-                        <h4 class="card-title mt-3">{{petition.name}}</h4>
-                        <h6>Goal: {{petition.goal}}</h6>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" style="width: 26%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{signupUsers}}</div>
-                        </div>
-                        <div class="meta">
-                            <a>Author: {{petition.creator}}</a>
-                        </div>
-                        <div class="meta">
-                            <a>Deliever to: {{petition.deliverTo}}</a>
-                        </div>
-                        <div class="card-text">
-                            {{petition.shortDescription}}
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let petition of petitions | orderByDate">
+            <div class="card">
+                <img class="card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
+                <div class="card-block">
+                    <figure class="editors-choce" *ngIf="petition.editorsChoice">
+                        <img src="http://dermasetreview.com/wp-content/uploads/2017/08/best-editors-choice.png" class="editors-choce-avatar" alt="">
+                    </figure>
+
+                    <h4 class="card-title mt-3">{{petition.name}}</h4>
+                    <h6>Goal: {{petition.goal}}</h6>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" [style.width]="(petition.signupUsers.length / petition.goal) * 100 + '%'">
+                            {{petition.signupUsers.length}}
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <small>Signed By {{petition.signupUsers.length}} People</small>
-                        <a [routerLink]="['../', petition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
+                    <div class="meta">
+                        <a>Author: {{petition.creator}}</a>
+                    </div>
+                    <h6>Created on: {{petition.creationDate | date:"dd/MM/yy"}}</h6>
+                    <div class="meta">
+                        <a>Deliever to: {{petition.deliverTo}}</a>
+                    </div>
+                    <div class="card-text">
+                        {{petition.shortDescription}}
                     </div>
                 </div>
+                <div class="card-footer">
+                    <small>Signed By {{petition.signupUsers.length}} People</small>
+                    <a [routerLink]="['../', petition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
