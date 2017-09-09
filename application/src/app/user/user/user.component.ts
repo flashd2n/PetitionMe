@@ -1,5 +1,6 @@
+import { FirebaseAuthService } from './../firebase-auth.service';
+import { FirebasePetitionService } from './../../petition/firebase-petition.service';
 import { Component, OnInit } from '@angular/core';
-import { FirebaseAuthService } from '../firebase-auth.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -7,24 +8,28 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent  {
-  email: string;
-  password: string;
+export class UserComponent implements OnInit {
 
-  constructor(public authService: FirebaseAuthService) {}
+  private petitions: any;
+  private email;
 
-  signup() {
-    this.authService.signup(this.email, this.password);
-    this.email = this.password = '';
-  }
+  constructor(public firebaseService: FirebasePetitionService, private authService: FirebaseAuthService) {}
 
-  login() {
-    this.authService.login(this.email, this.password);
-    this.email = this.password = '';
-  }
+  ngOnInit(): void {
+    this.firebaseService.getPetitions().subscribe(petitions => {
 
-  logout() {
-    this.authService.logout();
+      console.log(petitions);
+
+      this.authService.user.subscribe(user => {
+        this.email = user.email;
+
+        this.petitions = petitions.filter(x => x.signupUsers.includes(this.email));
+
+        console.log(this.petitions);
+
+      });
+
+    });
   }
 
 }
