@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FirebasePetitionService } from '../firebase-petition.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { RouterModule } from '@angular/router';
+import { FirebaseAuthService } from '../../user/firebase-auth.service';
 @Component({
   selector: 'app-petition-details',
   templateUrl: './petition-details.component.html',
@@ -11,13 +12,12 @@ import { RouterModule } from '@angular/router';
 })
 export class PetitionDetailsComponent implements OnInit, OnDestroy {
   petitions: any;
-
   id: number;
   private sub: any;
-
   constructor(
     private route: ActivatedRoute,
     private petitionService: FirebasePetitionService,
+    public authService: FirebaseAuthService
   ) {}
 
  ngOnInit() {

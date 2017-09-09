@@ -95,3 +95,12 @@ body {
 .lead {
     margin-top: 10px;
 }
+
+.col-lg-6 {
+  border: 1px solid gray;
+}
+
+.col-lg-6 h4 {
+  border-bottom: 1px solid gray;
+  color: goldenrod;
+}
