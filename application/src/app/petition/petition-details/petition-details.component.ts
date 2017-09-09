@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './petition-details.component.html',
   styleUrls: ['./petition-details.component.css']
 })
-export class PetitionDetailsComponent { // implements OnInit, OnDestroy
+export class PetitionDetailsComponent implements OnInit, OnDestroy {
   petitions: any;
 
   id: number;
@@ -18,8 +18,10 @@ export class PetitionDetailsComponent { // implements OnInit, OnDestroy
   constructor(
     private route: ActivatedRoute,
     private petitionService: FirebasePetitionService,
-  ) {
-    this.sub = this.route.params.subscribe(params => {
+  ) {}
+
+ ngOnInit() {
+   this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
 
       // In a real app: dispatch action to load the details here.
@@ -31,17 +33,9 @@ export class PetitionDetailsComponent { // implements OnInit, OnDestroy
         console.log(this.id);
         this.petitions = petitions.filter(x => +(x.$key) === this.id);
       });
-  }
+ }
 
-//  ngOnInit() {
-//    this.sub = this.route.params.subscribe(params => {
-//      this.id = +params['id']; // (+) converts string 'id' to a number
-//
-//      // In a real app: dispatch action to load the details here.
-//    });
-//  }
-//
-//  ngOnDestroy() {
-//    this.sub.unsubscribe();
-//  }
+ ngOnDestroy() {
+   this.sub.unsubscribe();
+ }
 }
