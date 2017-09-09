@@ -1,3 +1,4 @@
+import { HomePetitionsComponent } from './home-petitions/home-petitions.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -11,17 +12,18 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    PetitonRoutingModule
+    PetitonRoutingModule,
   ],
   declarations: [
     AllPetitionsComponent,
     NewPetitionComponent,
-    PetitionDetailsComponent
+    PetitionDetailsComponent,
+    HomePetitionsComponent,
 ],
   exports:  [
     AllPetitionsComponent,
     NewPetitionComponent,
-    PetitionDetailsComponent
+    PetitionDetailsComponent,
   ]
 })
 export class PetitionModule { }

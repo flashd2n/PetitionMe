@@ -1,0 +1,117 @@
+<p>
+</p>
+
+<div class="container">
+  <div class="row">
+    <div class="jumbotron jumbotron-fluid mt-3">
+      <div class="container">
+        <h1 class="display-3">Fluid jumbotron</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mt-1">
+      <div class="petition-card card">
+        <div class="card-header">
+            <h2 class="petition-card-title">Create a petition</h2>
+        </div>
+        <div class="card-body p-3">
+          <p class="card-text">
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+          </p>
+        </div>
+        <div class="card-footer">
+          <p><a class="btn btn-secondary" href="#" role="button">Learn more »</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mt-1">
+      <div class="petition-card card">
+        <div class="card-header">
+            <h2 class="petition-card-title">Kickstart your campaign!</h2>
+        </div>
+        <div class="card-body p-3">
+          <p class="card-text">
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+          </p>
+        </div>
+        <div class="card-footer">
+          <p><a class="btn btn-secondary" href="#" role="button">Learn more »</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mt-1">
+        <div class="petition-card card">
+          <div class="card-header">
+              <h2 class="petition-card-title">Gather support!</h2>
+          </div>
+          <div class="card-body p-3">
+            <p class="card-text">
+              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+            </p>
+          </div>
+          <div class="card-footer">
+            <p><a class="btn btn-secondary" href="#" role="button">Learn more »</a></p>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- featured petitions -->
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let featuredPetition of featuredPetitions">
+      <div class="petition-card card">
+        <img class="petition-card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
+        <div class="card-block">
+          <figure class="editors-choce">
+            <img src="http://dermasetreview.com/wp-content/uploads/2017/08/best-editors-choice.png" class="editors-choce-avatar" alt=""> 
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END featured petitions -->
+
+  <!-- best petitions -->
+  <h2 *ngFor="let latestPetition of latestPetitions">Date: {{latestPetition.creationDate}}</h2>
+  <!-- END best petitions -->
+
+  <!-- row of petitions -->
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let petition of petitions">
+      <div class="petition-card card">
+        <img class="petition-card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
+        <div class="card-block">
+          <figure class="editors-choce" *ngIf="petition.editorsChoice">
+            <img src="http://dermasetreview.com/wp-content/uploads/2017/08/best-editors-choice.png" class="editors-choce-avatar" alt=""> 
+          </figure>
+          
+          <h4 class="petition-card-title mt-3">{{petition.name}}</h4>
+          <h6>Goal: {{petition.goal}}</h6>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" style="width: 26%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{signupUsers}}</div>
+          </div>
+          <div class="meta">
+            <a>Author: {{petition.creator}}</a>
+          </div>
+          <div class="meta">
+            <a>Deliever to: {{petition.deliverTo}}</a>
+          </div>
+          <div class="petition-card-text card-text">
+            {{petition.shortDescription}}
+          </div>
+        </div>
+        <div class="petition-card-footer">
+            <small>Signed By {{petition.signupUsers.length}} People</small>
+            <a [routerLink]="['../', petition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END row of petitions -->
+
+  <div class="row">
+
+  </div>
+</div>
