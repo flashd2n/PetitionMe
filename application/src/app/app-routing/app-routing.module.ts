@@ -6,8 +6,8 @@ import { UserComponent } from '../user/user/user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'petitions', pathMatch: 'full' },
-  { path: 'user', component: UserComponent },
   { path: 'petitions', loadChildren: '../petition/petition.module#PetitionModule' },
+  { path: 'user', loadChildren: '../user/user.module#UserModule' },
   { path: '**', component: Error404Component }
 ];
 

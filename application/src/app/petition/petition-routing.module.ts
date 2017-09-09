@@ -1,3 +1,4 @@
+import { AuthGuardService } from './../user/auth-guard.service';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { AllPetitionsComponent } from './all-petitions/all-petitions.component';
@@ -7,7 +8,7 @@ import { PetitionDetailsComponent } from './petition-details/petition-details.co
 const routes: Routes = [
   { path: '', redirectTo: 'all', pathMatch: 'full' },
   { path: 'all', component: AllPetitionsComponent },
-  { path: 'new', component: NewPetitionComponent },
+  { path: 'new', canActivate: [AuthGuardService], component: NewPetitionComponent },
   { path: ':id', component: PetitionDetailsComponent },
 ];
 

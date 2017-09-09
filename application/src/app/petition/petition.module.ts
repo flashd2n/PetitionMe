@@ -1,3 +1,4 @@
+import { AuthGuardService } from './../user/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -24,6 +25,7 @@ import { OrderByDatePipe } from './all-petitions/orderByDate.pipe';
     AllPetitionsComponent,
     NewPetitionComponent,
     PetitionDetailsComponent
-  ]
+  ],
+  providers: [AuthGuardService]
 })
 export class PetitionModule { }
