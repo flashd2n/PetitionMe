@@ -13,10 +13,10 @@ export class HomePetitionsComponent implements OnInit {
   latestPetitions: any;
   bestPetitions: any;
 
-  constructor( private firebaseService: FirebasePetitionService ) { }
+  constructor( private db: FirebasePetitionService ) { }
 
   ngOnInit() {
-    this.firebaseService.getPetitions()
+    this.db.getPetitions()
       .subscribe(petitions => {
         this.petitions = petitions;
 
@@ -24,33 +24,9 @@ export class HomePetitionsComponent implements OnInit {
           this.petitions[i].creationDate = new Date(this.petitions[i].creationDate);
         }
 
-        this.featuredPetitions = _.filter(this.petitions, _.conforms({featured: val => val === true}));
-        this.bestPetitions = petitions.sort(this.compareSignups);
-        this.latestPetitions = petitions.sort(this.compareDates);
+        this.featuredPetitions = this.db.getFeaturedPetitions(this.petitions);
+        this.latestPetitions = this.db.getLatestPetitions(this.petitions);
+        this.bestPetitions = this.db.getBestPetitions(this.petitions);
     });
-  }
-
-  private compareDates(a, b) {
-    if (a.creationDate > b.creationDate) {
-      return -1;
-    }
-
-    if (a.creationDate < b.creationDate) {
-      return 1;
-    }
-
-    return 0;
-  }
-
-  private compareSignups(a, b) {
-    if (a.signupUsers.length > b.signupUsers.length) {
-      return -1;
-    }
-
-    if (a.signupUsers.length < b.signupUsers.length) {
-      return 1;
-    }
-
-    return 0;
   }
 }
