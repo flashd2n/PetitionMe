@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
   private petitions: any;
   private email;
 
-  constructor(public firebaseService: FirebasePetitionService, private authService: FirebaseAuthService) {}
+  constructor(public firebaseService: FirebasePetitionService, private authService: FirebaseAuthService) { }
 
   ngOnInit(): void {
     this.firebaseService.getPetitions().subscribe(petitions => {
@@ -21,11 +21,11 @@ export class UserComponent implements OnInit {
       console.log(petitions);
 
       this.authService.user.subscribe(user => {
-        this.email = user.email;
+        if (user) {
+          this.email = user.email;
 
-        this.petitions = petitions.filter(x => x.signupUsers.includes(this.email));
-
-        console.log(this.petitions);
+          this.petitions = petitions.filter(x => x.signupUsers.includes(this.email));
+        }
 
       });
 

@@ -1,3 +1,4 @@
+import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -9,8 +10,10 @@ export class FirebaseAuthService {
 
     user: Observable<firebase.User>;
 
-    constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
+    constructor(private firebaseAuth: AngularFireAuth,
+        private router: Router, private toastr: ToastsManager, private toastOpts: ToastOptions) {
         this.user = firebaseAuth.authState;
+        this.toastOpts.showCloseButton = true;
     }
 
     signup(email: string, password: string) {
@@ -18,23 +21,25 @@ export class FirebaseAuthService {
             .auth
             .createUserWithEmailAndPassword(email, password)
             .then(value => {
-                console.log('Success!', value);
+                this.toastr.success('Success!!!');
                 this.router.navigate(['/']);
             })
             .catch(err => {
+                this.toastr.error(err.message);
                 console.log('Something went wrong:', err.message);
             });
     }
 
     login(email: string, password: string) {
-        this.firebaseAuth
+        return this.firebaseAuth
             .auth
             .signInWithEmailAndPassword(email, password)
             .then(value => {
-                console.log('Nice, it worked!');
+                this.toastr.success('Success!!!');
                 this.router.navigate(['/']);
             })
             .catch(err => {
+                this.toastr.error('Incorrect email and/or password');
                 console.log('Something went wrong:', err.message);
             });
     }

@@ -1,3 +1,4 @@
+import { AuthGuardService } from './auth-guard.service';
 import { UsersRoutingModule } from './user-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,6 +18,7 @@ import { LoginComponent } from './login/login.component';
     UserComponent,
     RegisterComponent,
     LoginComponent
-  ]
+  ],
+  providers: [AuthGuardService]
 })
 export class UserModule { }
