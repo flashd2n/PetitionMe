@@ -1,3 +1,4 @@
+import { HighlightDirective } from './../high-light-petition.directive';
 import { HomePetitionsComponent } from './home-petitions/home-petitions.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     NewPetitionComponent,
     PetitionDetailsComponent,
     HomePetitionsComponent,
+    HighlightDirective,
 ],
   exports:  [
     AllPetitionsComponent,
