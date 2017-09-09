@@ -1,7 +1,15 @@
-<input type="text" [(ngModel)]="email" placeholder="email">
-<input type="password" [(ngModel)]="password" placeholder="password">
+<div class="row">
+  <div class="col-xs-4 col-md-4">
+  </div>
+  <div class="col-xs-4 col-md-3">
 
-<button (click)="login()" [disabled]="!email || !password">
+    <label class="col-form-label" for="emailInp">Email</label>
+    <input type="text" [(ngModel)]="email" class="form-control" id="emailInp">
+    <label class="col-form-label" for="passInp">Password</label>
+    <input type="password" [(ngModel)]="password" class="form-control" id="passInp">
+
+    <button (click)="login()" [disabled]="!email || !password" type="button" class="btn btn-primary">
   Login
 </button>
-
+  </div>
+</div>

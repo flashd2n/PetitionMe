@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
 
   email: string;
   password: string;
+  passwordConf: string;
 
   constructor(public authService: FirebaseAuthService, private toastr: ToastsManager, private toastOpts: ToastOptions) {
     this.toastOpts.showCloseButton = true;
@@ -22,6 +23,10 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    if (this.password !== this.passwordConf) {
+      this.toastr.error('Passwords do not match');
+      return;
+    }
     // tslint:disable-next-line:max-line-length
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 

@@ -1,6 +1,17 @@
-<input type="text" [(ngModel)]="email" placeholder="email">
-<input type="password" [(ngModel)]="password" placeholder="password">
-
-<button (click)="signup()" [disabled]="!email || !password">
-  Register
-</button>
+<div class="row">
+    <div class="col-xs-4 col-md-4">
+    </div>
+    <div class="col-xs-4 col-md-3">
+  
+      <label class="col-form-label" for="emailInp">Email</label>
+      <input type="text" [(ngModel)]="email" class="form-control" id="emailInp">
+      <label class="col-form-label" for="passInp">Password</label>
+      <input type="password" [(ngModel)]="password" class="form-control" id="passInp">
+      <label class="col-form-label" for="passInp">Confirm Password</label>
+      <input type="password" [(ngModel)]="passwordConf" class="form-control" id="passInp">
+  
+      <button (click)="signup()" [disabled]="!email || !password" type="button" class="btn btn-primary">
+          Register
+  </button>
+    </div>
+  </div>
