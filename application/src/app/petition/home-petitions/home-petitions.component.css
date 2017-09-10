@@ -118,10 +118,6 @@ h5 {
   text-decoration: none;
 }
 
-.meta a:hover {
-  color: white;
-}
-
 .progress {
   background-color: white;
   border: 1px solid grey;
@@ -131,32 +127,4 @@ h5 {
 .signups {
   color: black;
   font-weight: bold;
-}
-
-div.petition-card span.petition-tooltip {
-
-  
-  position: absolute;
-  width:140px;
-  color: #FFFFFF;
-  background: #000000;
-  height: 100px;
-  line-height: 100px;
-  text-align: center;
-  border-radius: 25px;
-  opacity: 0.5;
-  top: -50px;
-  left: 50%;
-  z-index: 999;
-}
-div.petition-card span.petition-tooltip:after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -8px;
-  width: 0; height: 0;
-  border-top: 8px solid #000000;
-  border-right: 8px solid transparent;
-  border-left: 8px solid transparent;
 }
