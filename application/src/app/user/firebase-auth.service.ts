@@ -52,4 +52,8 @@ export class FirebaseAuthService {
                 this.router.navigate(['/']);
             });
     }
+
+    getUser() {
+        return this.user;
+    }
 }
