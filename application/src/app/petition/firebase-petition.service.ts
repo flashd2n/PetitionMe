@@ -22,8 +22,24 @@ constructor(db: AngularFireDatabase, private router: Router, private toastr: Toa
     return this.petitions;
   }
 
-  putNewSignup(userEmail) {
-    return this.signups.push(userEmail);
+  putNewSignup(petitions: any, id: any, userEmail: any) {
+    if (petitions.signupUsers.includes(userEmail)) {
+      this.toastr.error('Illegal operation!');
+      return;
+    }
+    petitions.signupUsers.push(userEmail);
+    this.petitions.update(id, petitions)
+    .then(value => {
+      this.toastr.success('Petition has been signed successfully!');
+    }).catch(err => {
+      this.toastr.error('Illegal operation');
+    });
+  }
+
+  getSinglePetition(id: any) {
+    const predicate = { $key: val => val === id},
+          result = _.filter(this.petitions, _.conforms(predicate));
+    return result[0];
   }
 
   getFeaturedPetitions(petitions: any) {

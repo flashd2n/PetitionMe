@@ -10,16 +10,18 @@ import { FirebaseAuthService } from '../../user/firebase-auth.service';
   templateUrl: './petition-details.component.html',
   styleUrls: ['./petition-details.component.css']
 })
+
 export class PetitionDetailsComponent implements OnInit, OnDestroy {
+  petition: any;
   petitions: any;
-  id: number;
+  id: any;
   signupUsers: any;
   private sub: any;
   userEmail: any;
 
   constructor(
     private route: ActivatedRoute,
-    private petitionService: FirebasePetitionService,
+    private db: FirebasePetitionService,
     public authService: FirebaseAuthService
   ) { }
 
@@ -29,14 +31,11 @@ export class PetitionDetailsComponent implements OnInit, OnDestroy {
       this.id = params['id'];
     });
 
-    this.petitionService.getPetitions()
+    this.db.getPetitions()
       .subscribe(petitions => {
-        // console.log(petitions); // object
-        // console.log(this.id);
         this.petitions = petitions.filter(x => (x.$key) === this.id);
-        this.signupUsers = this.petitions[0].signupUsers;
-        console.log(this.petitions);
-        console.log(this.signupUsers);
+        this.petition = this.petitions[0];
+        this.signupUsers = this.petition.signupUsers;
 
         this.authService.user.subscribe(user => {
           if (user) {
@@ -52,8 +51,9 @@ export class PetitionDetailsComponent implements OnInit, OnDestroy {
   }
 
   addUserBtnClick() {
+    this.db.putNewSignup(this.petition, this.id, this.userEmail);
     // console.log(this.userEmail);
-    this.signupUsers.push(this.userEmail);
+    // this.signupUsers.push(this.userEmail);
     // this.petitionService.putNewSignup(this.userEmail);
   }
 

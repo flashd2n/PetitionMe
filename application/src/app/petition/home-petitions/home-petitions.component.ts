@@ -7,6 +7,7 @@ import * as _ from 'lodash';
   templateUrl: './home-petitions.component.html',
   styleUrls: ['./home-petitions.component.css'],
 })
+
 export class HomePetitionsComponent implements OnInit {
   petitions: any;
   featuredPetitions: any;
