@@ -11,6 +11,7 @@ import { NewPetitionComponent } from './new-petition/new-petition.component';
 import { PetitionDetailsComponent } from './petition-details/petition-details.component';
 import { RouterModule } from '@angular/router';
 import { OrderByDatePipe } from './all-petitions/orderByDate.pipe';
+import { OrderBySignupsPipe } from './all-petitions/orderBySignups.pipe';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { OrderByDatePipe } from './all-petitions/orderByDate.pipe';
     HomePetitionsComponent,
     HighlightDirective,
     PetitionTooltipDirective,
+    OrderBySignupsPipe
 ],
   exports:  [
     AllPetitionsComponent,

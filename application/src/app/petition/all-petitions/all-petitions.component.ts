@@ -3,6 +3,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { FirebasePetitionService } from '../firebase-petition.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { OrderByDatePipe } from './orderByDate.pipe';
+import { OrderBySignupsPipe } from './orderBySignups.pipe';
 
 @Component({
   selector: 'app-all-petitions',
@@ -11,22 +12,40 @@ import { OrderByDatePipe } from './orderByDate.pipe';
 })
 export class AllPetitionsComponent implements OnInit {
   petitions: any;
+  byDate = true;
+  bySignups = false;
+
   public orderByDate: OrderByDatePipe;
+  public orderBySignups: OrderBySignupsPipe;
 
   constructor( private firebaseService: FirebasePetitionService ) {
-      this.firebaseService.getPetitions().subscribe(petitions => {
-      // console.log(petitions);
-      // console.log(typeof petitions); // object
+  }
+
+
+  ngOnInit() {
+    this.firebaseService.getPetitions().subscribe(petitions => {
       this.petitions = petitions;
 
       for (let i = 0; i < this.petitions.length; i += 1) {
         this.petitions[i].creationDate = new Date(this.petitions[i].creationDate);
       }
-      // console.log(Array.isArray(petitions)); // true
+
     });
   }
 
+  toogleDatePipe () {
+    this.byDate = !this.byDate;
 
-  ngOnInit() {
+    if (this.byDate === true) {
+      this.bySignups = false;
+    }
+  }
+
+  toogleSingupsPipe () {
+    this.bySignups = !this.bySignups;
+
+    if (this.bySignups === true) {
+      this.byDate = false;
+    }
   }
 }

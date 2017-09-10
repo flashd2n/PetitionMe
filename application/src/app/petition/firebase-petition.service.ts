@@ -83,4 +83,8 @@ constructor(db: AngularFireDatabase) {
   private getDisplayCount() {
     return DISPLAY_COUNT;
   }
+
+  addPetition(pet) {
+    this.petitions.push(pet);
+  }
 }
