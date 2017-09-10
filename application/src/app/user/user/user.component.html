@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h1>
+    <h1 *ngIf="authService.getUser() | async">Welcome {{ (authService.getUser() | async)?.email }}!</h1>
     <h4>Petitions Signed By Me</h4>
     <div class="row">
         <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let petition of petitions">
@@ -11,18 +11,18 @@
                     </figure>
 
                     <h4 class="card-title mt-3">{{petition.name}}</h4>
-                    <h6>Goal: {{petition.goal}}</h6>
+                    <h6 id="pet-goal">Goal: {{petition.goal}}</h6>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" [style.width]="(petition.signupUsers.length / petition.goal) * 100 + '%'">
                             {{petition.signupUsers.length}}
                         </div>
                     </div>
                     <div class="meta">
-                        <a>Author: {{petition.creator}}</a>
+                        <a id="pet-creator">Author: {{petition.creator}}</a>
                     </div>
                     <h6>Created on: {{petition.creationDate | date:"dd/MM/yy"}}</h6>
                     <div class="meta">
-                        <a>Deliever to: {{petition.deliverTo}}</a>
+                        <a id="pet-deliver">Deliever to: {{petition.deliverTo}}</a>
                     </div>
                     <div class="card-text">
                         {{petition.shortDescription}}
