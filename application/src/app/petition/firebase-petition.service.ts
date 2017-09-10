@@ -13,4 +13,8 @@ constructor(db: AngularFireDatabase) {
   getPetitions() {
     return this.petitions;
   }
+
+  addPetition(pet) {
+    this.petitions.push(pet);
+  }
 }

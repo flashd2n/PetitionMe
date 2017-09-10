@@ -10,7 +10,7 @@
     <p class="lead">
       {{details.longDescription}}
     </p>
-    <p><a class="btn btn-lg btn-success" role="button">Sign up now</a></p>
+   <button class="btn btn-lg btn-success" role="button">Sign up now</button>
   </div>
 
   <div class="row marketing">
@@ -45,7 +45,7 @@
         <th></th>
       </tr>
     </thead>
-    <tbody *ngFor="let user of details.signupUsers">
+    <tbody *ngFor="let user of signupUsers">
       <tr>
         <td>Email</td>
         <td>{{user}}</td>

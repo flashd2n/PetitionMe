@@ -13,29 +13,39 @@ import { FirebaseAuthService } from '../../user/firebase-auth.service';
 export class PetitionDetailsComponent implements OnInit, OnDestroy {
   petitions: any;
   id: number;
+  signupUsers: any;
   private sub: any;
   constructor(
     private route: ActivatedRoute,
     private petitionService: FirebasePetitionService,
     public authService: FirebaseAuthService
-  ) {}
+  ) { }
 
- ngOnInit() {
-   this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id']; //
 
       // In a real app: dispatch action to load the details here.
     });
 
     this.petitionService.getPetitions()
       .subscribe(petitions => {
-        console.log(petitions); // object
-        console.log(this.id);
-        this.petitions = petitions.filter(x => +(x.$key) === this.id);
+        // console.log(petitions); // object
+        // console.log(this.id);
+        this.petitions = petitions.filter(x => (x.$key) === this.id);
+        this.signupUsers = petitions[0].signupUsers;
+        console.log(this.petitions);
+        console.log(this.signupUsers);
       });
- }
+  }
 
- ngOnDestroy() {
-   this.sub.unsubscribe();
- }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  addNewPet(pet) {
+    this.petitionService.addPetition(pet);
+  }
 }
+
+
