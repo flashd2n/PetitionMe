@@ -15,6 +15,8 @@ export class PetitionDetailsComponent implements OnInit, OnDestroy {
   id: number;
   signupUsers: any;
   private sub: any;
+  userEmail: any;
+
   constructor(
     private route: ActivatedRoute,
     private petitionService: FirebasePetitionService,
@@ -22,10 +24,9 @@ export class PetitionDetailsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.id = params['id']; //
 
-      // In a real app: dispatch action to load the details here.
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
     });
 
     this.petitionService.getPetitions()
@@ -36,6 +37,13 @@ export class PetitionDetailsComponent implements OnInit, OnDestroy {
         this.signupUsers = this.petitions[0].signupUsers;
         console.log(this.petitions);
         console.log(this.signupUsers);
+
+        this.authService.user.subscribe(user => {
+          if (user) {
+            this.userEmail = user.email;
+          }
+
+        });
       });
   }
 
@@ -43,9 +51,12 @@ export class PetitionDetailsComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  addNewPet(pet) {
-    this.petitionService.addPetition(pet);
+  addUserBtnClick() {
+    // console.log(this.userEmail);
+    this.signupUsers.push(this.userEmail);
+    // this.petitionService.putNewSignup(this.userEmail);
   }
+
 }
 
 

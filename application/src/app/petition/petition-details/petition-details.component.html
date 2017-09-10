@@ -1,5 +1,6 @@
 <div class="container lead" *ngFor="let details of petitions">
   <div class="jumbotron">
+    <p>{{ (authService.user | async)?.email }}</p>
     <h1 class="display-3">{{details.name}}</h1>
     <h4>Signups/Goal : {{details.signupUsers.length}}/{{details.goal}}</h4>
     <div class="progress">
@@ -9,7 +10,7 @@
     <p class="lead">
       {{details.longDescription}}
     </p>
-   <button class="btn btn-lg btn-success" role="button">Sign up now</button>
+   <button class="btn btn-lg btn-success" (click)="addUserBtnClick()" role="button">Sign up now</button>
   </div>
 
   <div class="row marketing">

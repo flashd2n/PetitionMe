@@ -11,7 +11,8 @@ const DISPLAY_COUNT = 4;
 export class FirebasePetitionService {
 
 petitions: FirebaseListObservable<any[]>;
-
+signups;
+signupUsers;
 constructor(db: AngularFireDatabase, private router: Router, private toastr: ToastsManager, private toastOpts: ToastOptions) {
     this.petitions = db.list('/petitions');
     this.toastOpts.showCloseButton = true;
@@ -19,6 +20,10 @@ constructor(db: AngularFireDatabase, private router: Router, private toastr: Toa
 
   getPetitions() {
     return this.petitions;
+  }
+
+  putNewSignup(userEmail) {
+    return this.signups.push(userEmail);
   }
 
   getFeaturedPetitions(petitions: any) {
@@ -96,4 +101,6 @@ constructor(db: AngularFireDatabase, private router: Router, private toastr: Toa
       this.toastr.error('Incorrect  information');
     });
   }
+
+
 }
