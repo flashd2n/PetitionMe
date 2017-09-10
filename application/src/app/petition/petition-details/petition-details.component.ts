@@ -33,7 +33,7 @@ export class PetitionDetailsComponent implements OnInit, OnDestroy {
         // console.log(petitions); // object
         // console.log(this.id);
         this.petitions = petitions.filter(x => (x.$key) === this.id);
-        this.signupUsers = petitions[0].signupUsers;
+        this.signupUsers = this.petitions[0].signupUsers;
         console.log(this.petitions);
         console.log(this.signupUsers);
       });
