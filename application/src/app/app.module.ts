@@ -26,7 +26,6 @@ import { PetitionModule } from './petition/petition.module';
     BrowserModule,
     BrowserAnimationsModule,
     ToastModule.forRoot(),
-    // PetitionModule,
     PetitionModule,
     UserModule,
     HomeModule,

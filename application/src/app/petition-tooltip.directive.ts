@@ -5,7 +5,8 @@ import { Directive, ElementRef, Renderer2, Input, HostListener } from '@angular/
 })
 
 export class PetitionTooltipDirective {
-  @Input('tooltipContent') tooltipContent: string;
+  @Input('signsCount') signsCount: number;
+  @Input('petitionGoal') petitionGoal: number;
   element: any;
   tooltip: any;
 
@@ -27,12 +28,13 @@ export class PetitionTooltipDirective {
 
   private getTooltip() {
     if (this.tooltip === null || this.tooltip === undefined) {
-      this.tooltip = this.r.createElement('span');
+      this.tooltip = this.r.createElement('div');
+      this.r.addClass(this.tooltip, 'progress-bar');
+      this.r.addClass(this.tooltip, 'progress-bar-striped');
+      this.r.addClass(this.tooltip, 'bg-danger');
+      this.r.addClass(this.tooltip, 'signups');
 
-      const content = this.r.createText(this.tooltipContent);
-
-      this.r.addClass(this.tooltip, 'petition-tooltip');
-      this.r.appendChild(this.tooltip, content);
+      this.r.setStyle(this.tooltip, 'width', ((this.petitionGoal - this.signsCount) / this.petitionGoal) * 100 + '%');
     }
 
     return this.tooltip;

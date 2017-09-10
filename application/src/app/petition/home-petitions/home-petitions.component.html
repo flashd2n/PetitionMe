@@ -1,10 +1,11 @@
 <div class="container">
   <!-- main jumbotron -->
   <div class="row">
-    <div class="jumbotron jumbotron-fluid mt-3">
+    <div class="jumbotron jumbotron-fluid petition-jumbotron" id="jubotron">
       <div class="container">
-        <h1 class="display-3">Fluid jumbotron</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        <h1 class="display-3" id="page-header">Sign a petition</h1>
+        <br>
+        <p class="lead" id="page-lead">Or create your own!</p>
       </div>
     </div>
   </div>
@@ -42,102 +43,24 @@
     </div>
   </div>
 
-  <!-- featured petitions -->
   <h2 class="d-block text-center">Featured petitions</h2>
   <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3 mt-4 mb-4" *ngFor="let featuredPetition of featuredPetitions">
-      <div class="petition-card card" appHighlight appPetitionTooltip tooltipContent="{{featuredPetition.shortDescription}}">
-        <img class="petition-card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
-        <div class="card-block">
-          <figure class="editors-choce">
-            <img src="http://dermasetreview.com/wp-content/uploads/2017/08/best-editors-choice.png" class="editors-choce-avatar" alt=""> 
-          </figure>
-          <h4 class="petition-card-title mt-3">{{featuredPetition.name}}</h4>
-          <h6>Goal: {{featuredPetition.goal}}</h6>
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" style="width: 26%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{signupUsers}}</div>
-          </div>
-          <div class="meta">
-            <a>Author: {{featuredPetition.creator}}</a>
-          </div>
-          <div class="meta">
-            <a>Deliever to: {{featuredPetition.deliverTo}}</a>
-          </div>
-          <div class="petition-card-text card-text">
-            {{featuredPetition.shortDescription}}
-          </div>
-        </div>
-        <div class="petition-card-footer">
-          <small>Signed By {{featuredPetition.signupUsers.length}} People</small>
-          <a [routerLink]="['../', featuredPetition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
-        </div>
-      </div>
+      <app-single-petition [petition]=featuredPetition></app-single-petition>
     </div>
   </div>
-  <!-- END featured petitions -->
 
-  <!-- latest petitions -->
-  <h2 class="d-block text-center mt-2">Latest petitions</h2>
+  <h2 class="d-block text-center">Latest petitions</h2>
   <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3 mt-4 mb-4" *ngFor="let latestPetition of latestPetitions">
-      <div class="petition-card card" appHighlight>
-        <img class="petition-card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
-        <div class="card-block">
-          <h4 class="petition-card-title">{{latestPetition.name}}</h4>
-          <h6>Goal: {{latestPetition.goal}}</h6>
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" style="width: 26%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{signupUsers}}</div>
-          </div>
-          <div class="meta">
-            <a>Author: {{latestPetition.creator}}</a>
-          </div>
-          <div class="meta">
-            <a>Deliever to: {{latestPetition.deliverTo}}</a>
-          </div>
-          <div class="petition-card-text card-text">
-            {{latestPetition.shortDescription}}
-          </div>
-        </div>
-        <div class="petition-card-footer">
-          <small>Signed By {{latestPetition.signupUsers.length}} People</small>
-          <a [routerLink]="['../', latestPetition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
-        </div>
-      </div>
+      <app-single-petition [petition]=latestPetition></app-single-petition>
     </div>
   </div>
-  <!-- END latest petitions -->
 
-  <!-- best petitions -->
   <h2 class="d-block text-center">Most successful petitions</h2>
   <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3 mt-4 mb-4" *ngFor="let bestPetition of bestPetitions">
-      <div class="petition-card card" appHighlight>
-        <img class="petition-card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
-        <div class="card-block">
-          <h4 class="petition-card-title mt-3">{{bestPetition.name}}</h4>
-          <h6>Goal: {{bestPetition.goal}}</h6>
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" style="width: 26%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{signupUsers}}</div>
-          </div>
-          <div class="meta">
-            <a>Author: {{bestPetition.creator}}</a>
-          </div>
-          <div class="meta">
-            <a>Deliever to: {{bestPetition.deliverTo}}</a>
-          </div>
-          <div class="petition-card-text card-text">
-            {{bestPetition.shortDescription}}
-          </div>
-        </div>
-        <div class="petition-card-footer">
-          <small>Signed By {{bestPetition.signupUsers.length}} People</small>
-          <a [routerLink]="['../', bestPetition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
-        </div>
-      </div>
+      <app-single-petition [petition]=bestPetition></app-single-petition>
     </div>
-  </div>
-  <!-- END best petitions -->
-  <div class="row">
-
   </div>
 </div>
