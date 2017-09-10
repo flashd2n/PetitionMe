@@ -10,6 +10,7 @@ import { DataStub } from './data.stub';
 import { AuthStub } from './auth.stub';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('User Component', () => {
   let component: UserComponent;
@@ -17,6 +18,47 @@ describe('User Component', () => {
   let de: DebugElement;
   let authService: any;
   let firebaseService: any;
+  const patitionsIncludeUser = [
+    {
+      category: 'categoryOne',
+      city: 'Sofia',
+      country: 'Bulgaria',
+      creationDate: '09/08/17',
+      creator: 'creatorOne',
+      deliverTo: 'deliverOne',
+      editorsChoice: true,
+      featured: true,
+      goal: 10,
+      longDescription: 'longOne',
+      name: 'nameOne',
+      shortDescription: 'shortOne',
+      signupUsers: ['kalin@test.com', 'pencho@test.com'],
+      $key: 0
+    }
+  ];
+
+  const patitionsNoUser = [
+    {
+      category: 'categoryOne',
+      city: 'Sofia',
+      country: 'Bulgaria',
+      creationDate: '09/08/17',
+      creator: 'creatorOne',
+      deliverTo: 'deliverOne',
+      editorsChoice: true,
+      featured: true,
+      goal: 10,
+      longDescription: 'longOne',
+      name: 'nameOne',
+      shortDescription: 'shortOne',
+      signupUsers: ['pencho@test.com'],
+      $key: 0
+    }
+  ];
+
+  const validUser = {
+    email: 'kalin@test.com'
+  };
 
   beforeEach(async(() => {
 
@@ -31,11 +73,12 @@ describe('User Component', () => {
     TestBed.configureTestingModule({
       declarations: [UserComponent],
       providers: [
-        {provide: FirebasePetitionService, useClass: DataStub},
-        {provide: FirebaseAuthService, useClass: AuthStub}
-      ]
+        { provide: FirebasePetitionService, useClass: DataStub },
+        { provide: FirebaseAuthService, useClass: AuthStub }
+      ],
+      imports: [RouterTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -48,39 +91,212 @@ describe('User Component', () => {
 
   });
 
-  it('should create', () => {
-    const validPetitions = [
-      {
-        category: 'categoryOne',
-        city: 'Sofia',
-        country: 'Bulgaria',
-        creationDate: '09/08/17',
-        creator: 'gosho',
-        deliverTo: 'Cuki',
-        editorsChoice: true,
-        featured: true,
-        goal: 10,
-        longDescription: 'lalalalalala',
-        name: 'very many awesome name',
-        shortDescription: 'lala',
-        signupUsers: ['kalin@test.com', 'pencho@test.com']
-      }
-    ];
+  it('Should create component', () => {
 
     const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
-      Observable.of(validPetitions)
+      Observable.of(patitionsIncludeUser)
     );
 
     const spyTwo = spyOn(authService, 'getUser').and.returnValue(
-      Observable.of({email: 'kalin@test.com'})
+      Observable.of(validUser)
     );
     component.ngOnInit();
-    // fixture.detectChanges();
-    console.log(component.petitions);
-    console.log(component.email);
     expect(component).toBeTruthy();
   });
 
+  it('Should call getPetitions from firebase service', () => {
 
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    expect(spy.calls.count()).toEqual(1);
+  });
+
+  it('Should call getUser from auth service', () => {
+
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    expect(spyTwo.calls.count()).toEqual(1);
+  });
+
+  it('Should display correct email in the welcome message', () => {
+
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      const el = fixture.debugElement.query(By.css('h1')).nativeElement;
+      const content = el.textContent;
+      expect(content).toContain(validUser.email);
+    });
+  });
+
+  it('Should display correct petition name', () => {
+
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      const el = fixture.debugElement.query(By.css('.card-title')).nativeElement;
+      const content = el.textContent;
+      expect(content).toContain(patitionsIncludeUser[0].name);
+    });
+  });
+
+  it('Should display correct petition goal', () => {
+
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      const el = fixture.debugElement.query(By.css('#pet-goal')).nativeElement;
+      const content = el.textContent;
+      expect(content).toContain(patitionsIncludeUser[0].goal);
+    });
+  });
+
+  it('Should display correct progress bar length', () => {
+
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      const el = fixture.debugElement.query(By.css('.progress-bar')).nativeElement;
+      const content = el.textContent;
+      expect(content).toContain(patitionsIncludeUser[0].signupUsers.length);
+    });
+  });
+
+  it('Should display correct petition creator', () => {
+
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      const el = fixture.debugElement.query(By.css('#pet-creator')).nativeElement;
+      const content = el.textContent;
+      expect(content).toContain(patitionsIncludeUser[0].creator);
+    });
+  });
+
+  it('Should display correct petition deliver', () => {
+
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      const el = fixture.debugElement.query(By.css('#pet-deliver')).nativeElement;
+      const content = el.textContent;
+      expect(content).toContain(patitionsIncludeUser[0].deliverTo);
+    });
+  });
+
+  it('Should display correct petition short description', () => {
+
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      const el = fixture.debugElement.query(By.css('.card-text')).nativeElement;
+      const content = el.textContent;
+      expect(content).toContain(patitionsIncludeUser[0].shortDescription);
+    });
+  });
+
+  it('Should display correct petition sign count', () => {
+
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      const el = fixture.debugElement.query(By.css('.card-footer small')).nativeElement;
+      const content = el.textContent;
+      expect(content).toContain(patitionsIncludeUser[0].signupUsers.length);
+    });
+  });
+
+  it('Should display correct petition details link', () => {
+
+    const spy = spyOn(firebaseService, 'getPetitions').and.returnValue(
+      Observable.of(patitionsIncludeUser)
+    );
+
+    const spyTwo = spyOn(authService, 'getUser').and.returnValue(
+      Observable.of(validUser)
+    );
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      const el = fixture.debugElement.query(By.css('.btn-sm')).nativeElement.getAttribute('href');
+      expect(el).toEqual('/petitions/0');
+    });
+  });
 });
-

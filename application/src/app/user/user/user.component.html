@@ -11,18 +11,18 @@
                     </figure>
 
                     <h4 class="card-title mt-3">{{petition.name}}</h4>
-                    <h6>Goal: {{petition.goal}}</h6>
+                    <h6 id="pet-goal">Goal: {{petition.goal}}</h6>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" [style.width]="(petition.signupUsers.length / petition.goal) * 100 + '%'">
                             {{petition.signupUsers.length}}
                         </div>
                     </div>
                     <div class="meta">
-                        <a>Author: {{petition.creator}}</a>
+                        <a id="pet-creator">Author: {{petition.creator}}</a>
                     </div>
                     <h6>Created on: {{petition.creationDate | date:"dd/MM/yy"}}</h6>
                     <div class="meta">
-                        <a>Deliever to: {{petition.deliverTo}}</a>
+                        <a id="pet-deliver">Deliever to: {{petition.deliverTo}}</a>
                     </div>
                     <div class="card-text">
                         {{petition.shortDescription}}
@@ -30,7 +30,7 @@
                 </div>
                 <div class="card-footer">
                     <small>Signed By {{petition.signupUsers.length}} People</small>
-                    <!-- <a [routerLink]="['/petitions', petition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a> -->
+                    <a [routerLink]="['/petitions', petition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
                 </div>
             </div>
         </div>
