@@ -1,3 +1,37 @@
-<p>
-  add-petition works!
-</p>
+<div class="row">
+  <div class="col-xs-4 col-md-4">
+  </div>
+  <div class="col-xs-4 col-md-3">
+    <p> {{ (authService.user | async)?.email }} </p>
+    <label class="col-form-label" for="creator">Your names please</label>
+    <input type="text" [(ngModel)]="creator" class="form-control" id="creator">
+
+    <label class="col-form-label" for="name">Name of your petition</label>
+    <input type="text" [(ngModel)]="name" class="form-control" id="name" value="dsfsdf">
+
+    <label class="col-form-label" for="category">Category</label>
+    <input type="text" [(ngModel)]="category" class="form-control" id="category">
+
+    <label class="col-form-label" for="city">City</label>
+    <input type="text" [(ngModel)]="city" class="form-control" id="city">
+
+    <label class="col-form-label" for="country">Country</label>
+    <input type="text" [(ngModel)]="country" class="form-control" id="country">
+
+    <label class="col-form-label" for="deliverTo">To deliver to</label>
+    <input type="text" [(ngModel)]="deliverTo" class="form-control" id="deliverTo">
+
+    <label class="col-form-label" for="goal">Goal of signups for you petition</label>
+    <input type="number" [(ngModel)]="goal" class="form-control" id="goal">
+
+    <label class="col-form-label" for="shortDescription">Short description (20 characters minimum)</label>
+    <input type="text" [(ngModel)]="shortDescription" class="form-control" id="shortDescription">
+
+    <label class="col-form-label" for="longDescription">Long description (200 characters minimum)</label>
+    <textarea rows="6" cols="50" [(ngModel)]="longDescription" class="form-control" id="longDescription">{{ (authService.user | async)?.email }}</textarea>
+
+    <button (click)="addNewPetition()" [disabled]="!name || !category || !city || !country || !deliverTo || !goal || !shortDescription || !longDescription" type="button" class="btn btn-primary">
+          Add new Petition
+    </button>
+  </div>
+</div>

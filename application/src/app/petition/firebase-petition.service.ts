@@ -1,7 +1,9 @@
 import 'rxjs/add/operator/filter';
+import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as _ from 'lodash';
+import { Router } from '@angular/router';
 
 const DISPLAY_COUNT = 4;
 
@@ -10,8 +12,9 @@ export class FirebasePetitionService {
 
 petitions: FirebaseListObservable<any[]>;
 
-constructor(db: AngularFireDatabase) {
+constructor(db: AngularFireDatabase, private router: Router, private toastr: ToastsManager, private toastOpts: ToastOptions) {
     this.petitions = db.list('/petitions');
+    this.toastOpts.showCloseButton = true;
   }
 
   getPetitions() {
@@ -85,6 +88,12 @@ constructor(db: AngularFireDatabase) {
   }
 
   addPetition(pet) {
-    this.petitions.push(pet);
+    this.petitions.push(pet)
+    .then(value => {
+      this.toastr.success('Successfuly added new Petition');
+      this.router.navigate(['/']);
+    }).catch(err => {
+      this.toastr.error('Incorrect  information');
+    });
   }
 }

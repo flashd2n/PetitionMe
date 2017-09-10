@@ -1,6 +1,5 @@
 <div class="container lead" *ngFor="let details of petitions">
   <div class="jumbotron">
-    <p>Welcome {{ (authService.user | async)?.email }}!</p>
     <h1 class="display-3">{{details.name}}</h1>
     <h4>Signups/Goal : {{details.signupUsers.length}}/{{details.goal}}</h4>
     <div class="progress">
