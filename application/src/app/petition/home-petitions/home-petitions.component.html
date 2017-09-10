@@ -46,7 +46,7 @@
   <h2 class="d-block text-center">Featured petitions</h2>
   <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3 mt-4 mb-4" *ngFor="let featuredPetition of featuredPetitions">
-      <div class="petition-card card" appHighlight>
+      <div class="petition-card card" appHighlight appPetitionTooltip tooltipContent="{{featuredPetition.shortDescription}}">
         <img class="petition-card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
         <div class="card-block">
           <figure class="editors-choce">

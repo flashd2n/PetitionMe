@@ -15,7 +15,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FirebasePetitionService } from './petition/firebase-petition.service';
 import { FirebaseAuthService } from './user/firebase-auth.service';
 import { PetitionModule } from './petition/petition.module';
-// import { HighLightPetitionDirective } from './high-light-petition.directive';
 
 @NgModule({
   declarations: [

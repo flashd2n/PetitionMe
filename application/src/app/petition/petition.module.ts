@@ -1,3 +1,4 @@
+import { PetitionTooltipDirective } from './../petition-tooltip.directive';
 import { HighlightDirective } from './../high-light-petition.directive';
 import { HomePetitionsComponent } from './home-petitions/home-petitions.component';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
     PetitionDetailsComponent,
     HomePetitionsComponent,
     HighlightDirective,
+    PetitionTooltipDirective,
 ],
   exports:  [
     AllPetitionsComponent,
