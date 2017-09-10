@@ -1,4 +1,7 @@
 import { AuthGuardService } from './../user/auth-guard.service';
+import { PetitionTooltipDirective } from './../petition-tooltip.directive';
+import { HighlightDirective } from './../high-light-petition.directive';
+import { HomePetitionsComponent } from './home-petitions/home-petitions.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -13,13 +16,16 @@ import { OrderByDatePipe } from './all-petitions/orderByDate.pipe';
   imports: [
     CommonModule,
     FormsModule,
-    PetitonRoutingModule
+    PetitonRoutingModule,
   ],
   declarations: [
     AllPetitionsComponent,
     NewPetitionComponent,
     PetitionDetailsComponent,
-    OrderByDatePipe
+    OrderByDatePipe,
+    HomePetitionsComponent,
+    HighlightDirective,
+    PetitionTooltipDirective,
 ],
   exports:  [
     AllPetitionsComponent,

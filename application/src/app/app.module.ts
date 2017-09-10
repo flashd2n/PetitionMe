@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-// import { PetitionModule } from './petition/petition.module';
 import { UserModule } from './user/user.module';
 import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -16,17 +15,19 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FirebasePetitionService } from './petition/firebase-petition.service';
 import { FirebaseAuthService } from './user/firebase-auth.service';
+import { PetitionModule } from './petition/petition.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ToastModule.forRoot(),
     // PetitionModule,
+    PetitionModule,
     UserModule,
     HomeModule,
     AppRoutingModule,
