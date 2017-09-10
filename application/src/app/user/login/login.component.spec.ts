@@ -19,15 +19,15 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
 
-    let firebaseServiceStub = {
+    const firebaseServiceStub = {
       login: jasmine.createSpy('login').and.returnValue(true)
     };
 
-    let toastsManagerServiceStub = {
+    const toastsManagerServiceStub = {
       error: jasmine.createSpy('error').and.returnValue(true)
     };
 
-    let toastsOptionsServiceStub = {
+    const toastsOptionsServiceStub = {
       showCloseButton: true
     };
 
