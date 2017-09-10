@@ -13,6 +13,9 @@ describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
   let de: DebugElement;
   let authService: any;
+  let emailInput: HTMLInputElement;
+  let passwordInput: HTMLInputElement;
+  let loginButton: HTMLElement;
 
   beforeEach(async(() => {
 
@@ -43,16 +46,112 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
 
     authService = TestBed.get(FirebaseAuthService);
     de = fixture.debugElement;
 
+    emailInput = fixture.debugElement.query(By.css('#emailInp')).nativeElement;
+    passwordInput = fixture.debugElement.query(By.css('#passInp')).nativeElement;
+    loginButton = fixture.debugElement.query(By.css('button')).nativeElement;
   });
 
-  it('should create', () => {
-    console.log(de);
-    expect(component).toBeTruthy();
+  it('Should display login button', () => {
+    const loginBtn = de.query(By.css('button')).nativeElement;
+    expect(loginBtn).toBeTruthy();
+  });
+
+  it('Should display email input field', () => {
+    const emailInputEl = de.query(By.css('#emailInp')).nativeElement;
+    expect(emailInputEl).toBeTruthy();
+  });
+
+  it('Should display password input field', () => {
+    const passwordInputEl = de.query(By.css('#passInp')).nativeElement;
+    expect(passwordInputEl).toBeTruthy();
+  });
+
+  it('Should correctly collect the email from the input field', () => {
+    fixture.detectChanges();
+
+    fixture.whenStable()
+      .then(() => {
+        emailInput.value = 'kalin@test.com';
+        emailInput.dispatchEvent(new Event('input'));
+
+        expect(fixture.componentInstance.email).toBe('kalin@test.com');
+      });
+  });
+
+  it('Should correctly collect the password from the input field', () => {
+    fixture.detectChanges();
+
+    fixture.whenStable()
+      .then(() => {
+        passwordInput.value = '1234567';
+        passwordInput.dispatchEvent(new Event('input'));
+
+        expect(fixture.componentInstance.password).toBe('1234567');
+      });
+  });
+
+  it('Should call authService login method when email and password are provided', () => {
+    fixture.detectChanges();
+
+    fixture.whenStable()
+      .then(() => {
+        emailInput.value = 'kalin@test.com';
+        emailInput.dispatchEvent(new Event('input'));
+
+        passwordInput.value = '1234567';
+        passwordInput.dispatchEvent(new Event('input'));
+
+        fixture.detectChanges();
+
+        loginButton.click();
+
+        fixture.whenStable().then(() => {
+          expect(authService.login.calls.count()).toBe(1);
+        });
+
+      });
+  });
+
+  it('Should NOT call authService login method when email is not provided', () => {
+    fixture.detectChanges();
+
+    fixture.whenStable()
+      .then(() => {
+        passwordInput.value = '1234567';
+        passwordInput.dispatchEvent(new Event('input'));
+
+        fixture.detectChanges();
+
+        loginButton.click();
+
+        fixture.whenStable().then(() => {
+          expect(authService.login.calls.count()).toBe(0);
+        });
+
+      });
+  });
+
+  it('Should NOT call authService login method when password is not provided', () => {
+    fixture.detectChanges();
+
+    fixture.whenStable()
+      .then(() => {
+        emailInput.value = 'kalin@test.com';
+        emailInput.dispatchEvent(new Event('input'));
+
+        fixture.detectChanges();
+
+        loginButton.click();
+
+        fixture.whenStable().then(() => {
+          expect(authService.login.calls.count()).toBe(0);
+        });
+
+      });
   });
 });
 
