@@ -2,8 +2,8 @@ import { Component, OnInit, NgModule } from '@angular/core';
 
 import { FirebasePetitionService } from '../firebase-petition.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { OrderByDatePipe } from './orderByDate.pipe';
-import { OrderBySignupsPipe } from './orderBySignups.pipe';
+import { OrderByDatePipe } from './../pipes/orderByDate.pipe';
+import { OrderBySignupsPipe } from './../pipes/orderBySignups.pipe';
 
 @Component({
   selector: 'app-all-petitions',
@@ -33,7 +33,7 @@ export class AllPetitionsComponent implements OnInit {
     });
   }
 
-  toogleDatePipe () {
+  toggleDatePipe () {
     this.byDate = !this.byDate;
 
     if (this.byDate === true) {
@@ -41,7 +41,7 @@ export class AllPetitionsComponent implements OnInit {
     }
   }
 
-  toogleSingupsPipe () {
+  toggleSingupsPipe () {
     this.bySignups = !this.bySignups;
 
     if (this.bySignups === true) {

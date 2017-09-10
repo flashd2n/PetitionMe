@@ -1,10 +1,10 @@
 import { Directive, ElementRef, Renderer2, Input, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appPetitionTooltip]'
+  selector: '[appPetitionProgressbar]'
 })
 
-export class PetitionTooltipDirective {
+export class PetitionProgressbarDirective {
   @Input('signsCount') signsCount: number;
   @Input('petitionGoal') petitionGoal: number;
   element: any;

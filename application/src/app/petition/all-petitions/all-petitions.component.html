@@ -1,107 +1,24 @@
 <div class="container">
-    <h4>Take a look at all available petitions</h4>
     <div class="change-views">
-        <button type="button" class="btn btn-success" (click)="toogleDatePipe()">Order By latest added petitions</button>
-        <button type="button" class="btn btn-success" (click)="toogleSingupsPipe()">Order by most subscribed petitions</button>
+        <button type="button" class="btn btn-success btn-block mt-3" (click)="toggleDatePipe()">Order By latest added petitions</button>
+        <button type="button" class="btn btn-success btn-block mt-3" (click)="toggleSingupsPipe()">Order by most subscribed petitions</button>
     </div>
     
     <div class="row" *ngIf="byDate">
         <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let petition of petitions | orderByDate">
-            <div class="card">
-                <img class="card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
-                <div class="card-block">
-                    <figure class="editors-choce" *ngIf="petition.editorsChoice">
-                        <img src="http://dermasetreview.com/wp-content/uploads/2017/08/best-editors-choice.png" class="editors-choce-avatar" alt="">
-                    </figure>
-                    <h4 class="card-title mt-3">{{petition.name}}</h4>
-                    <h6>Signups: {{petition.signupUsers.length}}/{{petition.goal}}</h6>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" [style.width]="(petition.signupUsers.length / petition.goal) * 100 + '%'"></div>
-                    </div>
-                    <div class="meta">
-                        <a>Author: {{petition.creator}}</a>
-                    </div>
-                    <h6>Created on: {{petition.creationDate | date:"dd/MM/yy"}}</h6>
-                    <div class="meta">
-                        <a>Deliever to: {{petition.deliverTo}}</a>
-                    </div>
-                    <div class="card-text">
-                        {{petition.shortDescription}}
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small>Signed By {{petition.signupUsers.length}} People</small>
-                    <a [routerLink]="['../', petition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
-                </div>
-            </div>
+            <app-single-petition [petition]=petition></app-single-petition>
         </div>
     </div>
+
     <div class="row" *ngIf="bySignups">
         <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let petition of petitions | orderBySignups">
-            <div class="card">
-                <img class="card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
-                <div class="card-block">
-                    <figure class="editors-choce" *ngIf="petition.editorsChoice">
-                        <img src="http://dermasetreview.com/wp-content/uploads/2017/08/best-editors-choice.png" class="editors-choce-avatar" alt="">
-                    </figure>
-
-                    <h4 class="card-title mt-3">{{petition.name}}</h4>
-                    <h6>Signups/Goal: {{petition.signupUsers.length}}/{{petition.goal}}</h6>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" [style.width]="(petition.signupUsers.length / petition.goal) * 100 + '%'">
-                           
-                        </div>
-                    </div>
-                    <div class="meta">
-                        <a>Author: {{petition.creator}}</a>
-                    </div>
-                    <h6>Created on: {{petition.creationDate | date:"dd/MM/yy"}}</h6>
-                    <div class="meta">
-                        <a>Deliever to: {{petition.deliverTo}}</a>
-                    </div>
-                    <div class="card-text">
-                        {{petition.shortDescription}}
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small>Signed By {{petition.signupUsers.length}} People</small>
-                    <a [routerLink]="['../', petition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
-                </div>
-            </div>
+            <app-single-petition [petition]=petition></app-single-petition>
         </div>
     </div>
+
     <div class="row" *ngIf="!bySignups && !byDate">
         <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let petition of petitions | orderByDate">
-            <div class="card">
-                <img class="card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
-                <div class="card-block">
-                    <figure class="editors-choce" *ngIf="petition.editorsChoice">
-                        <img src="http://dermasetreview.com/wp-content/uploads/2017/08/best-editors-choice.png" class="editors-choce-avatar" alt="">
-                    </figure>
-
-                    <h4 class="card-title mt-3">{{petition.name}}</h4>
-                    <h6>Signups/Goal: {{petition.signupUsers.length}}/{{petition.goal}}</h6>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" [style.width]="(petition.signupUsers.length / petition.goal) * 100 + '%'">
-                           
-                        </div>
-                    </div>
-                    <div class="meta">
-                        <a>Author: {{petition.creator}}</a>
-                    </div>
-                    <h6>Created on: {{petition.creationDate | date:"dd/MM/yy"}}</h6>
-                    <div class="meta">
-                        <a>Deliever to: {{petition.deliverTo}}</a>
-                    </div>
-                    <div class="card-text">
-                        {{petition.shortDescription}}
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small>Signed By {{petition.signupUsers.length}} People</small>
-                    <a [routerLink]="['../', petition.$key]" routerLinkActive="active" class="btn btn-secondary float-right btn-sm">Details</a>
-                </div>
-            </div>
+            <app-single-petition [petition]=petition></app-single-petition>
         </div>
     </div>
 </div>

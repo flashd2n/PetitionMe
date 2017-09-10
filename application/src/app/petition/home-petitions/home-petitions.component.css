@@ -128,27 +128,3 @@ h5 {
   color: black;
   font-weight: bold;
 }
-
-.petition-jumbotron {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-#jubotron {
-  background-image: url("http://i.huffpost.com/gen/2508222/images/o-PETITION-SIGNING-facebook.jpg") !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-#page-header {
-  margin-top: 35% !important;
-  background-color: #2b3e50 !important;
-  display: inline-block !important;
-  padding: 5px 10px 5px 10px;
-}
-
-#page-lead {
-  background-color: #2b3e50 !important;
-  display: inline-block !important;
-  padding: 5px 10px 5px 10px;
-}

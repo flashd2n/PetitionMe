@@ -8,7 +8,7 @@
       <small class="text-primary d-block mt-4">Created on: {{petition.creationDate | date:"dd/MM/yy"}}</small>
       <h3 class="petition-card-title">{{petition.name}}</h3>
       <p>Signups: {{petition.signupUsers.length}}/{{petition.goal}}</p>
-      <div class="progress" appPetitionTooltip signsCount="{{petition.signupUsers.length}}" petitionGoal="{{petition.goal}}">
+      <div class="progress" appPetitionProgressbar signsCount="{{petition.signupUsers.length}}" petitionGoal="{{petition.goal}}">
         <div class="progress-bar progress-bar-striped bg-info signups" role="progressbar" [style.width]="(petition.signupUsers.length / petition.goal) * 100 + '%'"></div>
       </div>
       <div class="meta">
