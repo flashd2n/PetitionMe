@@ -259,7 +259,7 @@ ModelManifest.xml
 **/coverage/**
 
 # compiled output
-/dist
+**/dist
 /tmp
 /out-tsc
 
