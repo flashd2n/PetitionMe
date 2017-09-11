@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
   public petitions: any;
   public email;
 
-  constructor(public firebaseService: FirebasePetitionService, private authService: FirebaseAuthService) { }
+  constructor(public firebaseService: FirebasePetitionService, public authService: FirebaseAuthService) { }
 
   ngOnInit(): void {
     this.firebaseService.getPetitions().subscribe(petitions => {
