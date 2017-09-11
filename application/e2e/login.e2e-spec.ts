@@ -51,6 +51,7 @@ describe('Login Page', () => {
 
     const EC = protractor.ExpectedConditions;
     browser.wait(EC.urlContains('/home'), 5000).then(() => {
+      expect(browser.driver.getCurrentUrl()).toContain('/user/login');
     }).catch(() => {
       expect(browser.driver.getCurrentUrl()).toContain('/user/login');
     });

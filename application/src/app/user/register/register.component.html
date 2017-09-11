@@ -7,8 +7,8 @@
       <input type="text" [(ngModel)]="email" class="form-control" id="emailInp">
       <label class="col-form-label" for="passInp">Password</label>
       <input type="password" [(ngModel)]="password" class="form-control" id="passInp">
-      <label class="col-form-label" for="passInp">Confirm Password</label>
-      <input type="password" [(ngModel)]="passwordConf" class="form-control" id="passInp">
+      <label class="col-form-label" for="confPassInp">Confirm Password</label>
+      <input type="password" [(ngModel)]="passwordConf" class="form-control" id="confPassInp">
   
       <button (click)="signup()" [disabled]="!email || !password" type="button" class="btn btn-primary">
           Register
