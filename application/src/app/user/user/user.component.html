@@ -2,7 +2,7 @@
     <h1 *ngIf="authService.getUser() | async">Welcome {{ (authService.getUser() | async)?.email }}!</h1>
     <h4>Petitions Signed By Me</h4>
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let petition of petitions">
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-4 my-petitions" *ngFor="let petition of petitions">
             <div class="card">
                 <img class="card-img-top" src="https://www.cicondos.com/Portals/0/Skins/cicondos_2013//images/TopBar.png">
                 <div class="card-block">

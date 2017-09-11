@@ -33,7 +33,7 @@
               <a class="nav-link" [routerLink]="['/user/register']">REGISTER</a>
             </li>
             <li class="nav-item" *ngIf="authService.user | async">
-              <a class="nav-link" [routerLink]="['/user/my-page']">Welcome {{ (authService.user | async)?.email }}!</a>
+              <a class="nav-link" [routerLink]="['/user/my-page']" id="user-page">Welcome {{ (authService.user | async)?.email }}!</a>
             </li>
             <li class="nav-item" *ngIf="authService.user | async">
               <a class="nav-link" (click)="logout()">Logout</a>
